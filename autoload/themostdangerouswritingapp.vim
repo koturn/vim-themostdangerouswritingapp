@@ -15,13 +15,14 @@ let g:themostdangerouswritingapp#time_to_stop = get(g:, 'themostdangerouswriting
 function! themostdangerouswritingapp#enable() abort
   augroup TheMostDangerousWritingApp
     autocmd!
-    autocmd CursorHold,CursorHoldI * call s:update()
+    autocmd CursorHold,CursorHoldI <buffer>  call s:update()
   augroup END
 endfunction
 
 function! themostdangerouswritingapp#disable() abort
   augroup TheMostDangerousWritingApp
-    autocmd!
+    autocmd! CursorHold,CursorHoldI <buffer>
+    let s:clock = 0
   augroup END
 endfunction
 
@@ -33,8 +34,12 @@ function! s:update() abort
     let s:clock += &updatetime
   else
     call feedkeys("\<Esc>ggdG", 'n')
+    let save_undolevels = &l:undolevels
+    setlocal undolevels=-1
+    execute "normal! a \<BS>\<Esc>"
+    setlocal nomodified
+    let &l:undolevels = save_undolevels
     write
-    bwipeout
     call themostdangerouswritingapp#disable()
   endif
 endfunction

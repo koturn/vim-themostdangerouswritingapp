@@ -19,9 +19,11 @@ function! themostdangerouswritingapp#enable() abort
     autocmd CursorMoved,CursorMovedI <buffer>  let b:themostdangerouswritingapp_clock = 0
     autocmd CursorHold,CursorHoldI <buffer>  call s:update()
   augroup END
+  let b:themostdangerouswritingapp_clock = 0
 endfunction
 
 function! themostdangerouswritingapp#disable() abort
+  unlet! b:themostdangerouswritingapp_clock
   augroup TheMostDangerousWritingApp
     autocmd! CursorHold,CursorHoldI,CursorMoved,CursorMovedI <buffer>
   augroup END

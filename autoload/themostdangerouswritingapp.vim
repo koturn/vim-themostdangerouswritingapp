@@ -13,9 +13,8 @@ let g:themostdangerouswritingapp#time_to_stop = get(g:, 'themostdangerouswriting
 
 
 function! themostdangerouswritingapp#enable() abort
-  let b:themostdangerouswritingapp_clock = 0
+  call themostdangerouswritingapp#disable()
   augroup TheMostDangerousWritingApp
-    autocmd!
     autocmd CursorMoved,CursorMovedI <buffer>  let b:themostdangerouswritingapp_clock = 0
     autocmd CursorHold,CursorHoldI <buffer>  call s:update()
   augroup END

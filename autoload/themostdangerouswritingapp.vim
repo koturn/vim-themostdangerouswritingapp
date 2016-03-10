@@ -34,7 +34,7 @@ function! s:update() abort
     call feedkeys(mode() ==# 'i' ? "\<C-g>\<ESC>" : "g\<ESC>", 'n')
     let s:clock += &updatetime
   else
-    call feedkeys("\<Esc>ggdG", 'n')
+    execute 'normal! ggdG'
     let save_undolevels = &l:undolevels
     setlocal undolevels=-1
     execute "normal! a \<BS>\<Esc>"

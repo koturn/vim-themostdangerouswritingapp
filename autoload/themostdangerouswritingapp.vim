@@ -34,14 +34,13 @@ function! s:update() abort
     call feedkeys(mode() ==# 'i' ? "\<C-g>\<ESC>" : "g\<ESC>", 'n')
     let b:themostdangerouswritingapp_clock += &updatetime
   else
-    unlet! b:themostdangerouswritingapp_clock
     execute 'normal! ggdG'
     let save_undolevels = &l:undolevels
     setlocal undolevels=-1
     execute "normal! a \<BS>\<Esc>"
     setlocal nomodified
     let &l:undolevels = save_undolevels
-    write
+    silent! write
     call themostdangerouswritingapp#disable()
   endif
 endfunction

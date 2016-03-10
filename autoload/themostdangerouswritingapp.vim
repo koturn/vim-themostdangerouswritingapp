@@ -16,7 +16,7 @@ function! themostdangerouswritingapp#enable() abort
   augroup TheMostDangerousWritingApp
     autocmd!
     autocmd CursorMoved,CursorMovedI <buffer>  let s:clock = 0
-    autocmd CursorHold,CursorHoldI <buffer>  noautocmd call s:update()
+    autocmd CursorHold,CursorHoldI <buffer>  call s:update()
   augroup END
 endfunction
 
@@ -34,7 +34,7 @@ function! s:update() abort
     call feedkeys(mode() ==# 'i' ? "\<C-g>\<ESC>" : "g\<ESC>", 'n')
     let s:clock += &updatetime
   else
-    call feedkeys("\<Esc>ggdGi\<Space>", 'n')
+    call feedkeys("\<Esc>ggdG", 'n')
     let save_undolevels = &l:undolevels
     setlocal undolevels=-1
     execute "normal! a \<BS>\<Esc>"

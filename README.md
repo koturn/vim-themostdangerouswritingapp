@@ -3,6 +3,8 @@ vim-themostdangerouswritingapp
 
 [The Most Dangerous Writing App](http://www.themostdangerouswritingapp.com/) in Vim.
 
+![vim-themostdangerouswritingapp.gif](https://raw.githubusercontent.com/wiki/koturn/vim-themostdangerouswritingapp/image/vim-themostdangerouswritingapp.gif)
+
 
 ## Usage
 
